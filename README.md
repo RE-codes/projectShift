@@ -1,0 +1,1 @@
+My solutions to the coding challenge. Not elegant, but they seem to work. Except for the last one. I've squeezed out the data I want, but I'm not sure how to combine them into a single object. Overall, I think my code can be cleaner and more DRY.
