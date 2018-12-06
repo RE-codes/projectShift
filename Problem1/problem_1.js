@@ -4,4 +4,4 @@ const durm = () => {
 
 durm();
 
-// This will open an alert dialog box in the terminal console.//
+// This will log the alert to the terminal console. It could easily be replaced by an alert dialog box in a browser.
