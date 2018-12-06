@@ -20,45 +20,66 @@ const dollaBillsYall = function(cost){
     let fives = 0;
     let ones = 0;
     let remainder = 0;
+    let results = {};
 
     if (cost >= 100){
         hundreds = parseInt(cost/100);
         remainder = cost - hundreds * 100;
-        dollaBillsYall(remainder);
-        } else if (cost >= 20 && cost < 100){
-            twenties = parseInt(cost/20);
-            remainder = cost - twenties * 20;
+        console.log(`${hundreds} hundreds`);
+        results = {100: hundreds};
+        if (remainder > 0){
             dollaBillsYall(remainder);
-        } else if (cost >= 10 && cost < 20){
-            tens = parseInt(cost/10);
-            remainder = cost - tens * 10;
-            dollaBillsYall(remainder);
-        } else if (cost >= 5 && cost < 10){
-            fives = parseInt(cost/5);
-            remainder = cost - fives * 5;
-            dollaBillsYall(remainder);
-        } else {
-            ones = cost;
         }
+    } else if (cost >= 20 && cost < 100){
+        twenties = parseInt(cost/20);
+        remainder = cost - twenties * 20;
+        console.log(`${twenties} twenties`);
+        results = {20: twenties};
+        if (remainder > 0){
+            dollaBillsYall(remainder);
+        }
+    } else if (cost >= 10 && cost < 20){
+        tens = parseInt(cost/10);
+        remainder = cost - tens * 10;
+        console.log(`${tens} tens`);
+        results = {10: tens};
+        if (remainder > 0){
+            dollaBillsYall(remainder);
+        }
+    } else if (cost >= 5 && cost < 10){
+        fives = parseInt(cost/5);
+        remainder = cost - fives * 5;
+        console.log(`${fives} fives`);
+        results = {5: fives};
+        if (remainder > 0){
+            dollaBillsYall(remainder);
+        }
+    } else {
+        ones = cost;
+        console.log(`${ones} ones`);
+        results = {1: ones};
+    }
     
     // if (remainder > 0){
     //     dollaBillsYall(remainder);
     // } grrrrr
 
-// So far this will take the initial cost and correctly determine how many of the largest bill is needed and the remainder. This is probably where the recursion thing we talked about would come in handy.
 
-    if (hundreds > 0){console.log(`${hundreds} hundreds`)};
-    if (twenties > 0){console.log(`${twenties} twenties`)};
-    if (tens > 0){console.log(`${tens} tens`)};
-    if (fives > 0){console.log(`${fives} fives`)};
-    if (ones > 0){console.log(`${ones} ones`)};
+//  So far this will take the initial cost and correctly determine how many of the largest bill is needed and the remainder. This is probably where the recursion thing we talked about would come in handy.
 
-//Now to turn these results into an object...
+//  So calling the function on a non-zero remainder seemed to help.
 
-let results = {
+    //  Now to turn these results into an object...
     
-}
+//  Treating the object like an array didn't work...
+
+   console.log(results);  
+   
+//  This prints four separate objects. I need to combine them somehow.
+//  *** WHY ARE THEY IN THE REVERSE ORDER? *** 
+
+//  Moved the function into a nested if statement for the various denominations to give them a condition of a non-zero remainder. Seemed to help. I now have just the denominations I need in individual objects. I'm sure there's a way to combine objects. Seems like a good time to google something...
 
 };
 
-dollaBillsYall(1431);
+dollaBillsYall(1744);
